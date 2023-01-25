@@ -27,10 +27,10 @@ const Wordle = ({ solution }) => {
   });
 
   return (
-    <div>
+    <>
       <Grid currentGuess={currentGuess} guesses={guesses} turn={turn} />
       <Keyboard usedKeys={usedKeys} handleKeyup={handleKeyup} />
-    </div>
+    </>
   );
 };
 

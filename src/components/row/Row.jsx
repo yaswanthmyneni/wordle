@@ -1,11 +1,15 @@
 import React from "react";
+import { useThemeContext } from "../../context";
 
 const Row = ({ guessArr, currentGuess }) => {
-  const squareBoxCss = `flex justify-center items-center border-2 border-slate-500 w-10 h-10 rounded`;
+  const { theme } = useThemeContext();
+  const squareBoxCss = `flex justify-center items-center border-2 border-slate-500 w-10 h-10 rounded ${
+    theme === "dark" ? "text-white" : ""
+  }`;
 
   if (guessArr) {
     return (
-      <section className="flex justify-center items-center gap-2 mt-2">
+      <div className="flex justify-center items-center gap-2 mt-2">
         {guessArr.map((letterObj, index) => {
           return (
             <div
@@ -22,14 +26,14 @@ const Row = ({ guessArr, currentGuess }) => {
             </div>
           );
         })}
-      </section>
+      </div>
     );
   }
 
   if (currentGuess) {
     let letters = currentGuess.split("");
     return (
-      <section className="flex justify-center items-center gap-2 mt-2">
+      <div className="flex justify-center items-center gap-2 mt-2">
         {letters.map((letter, index) => {
           return (
             <div key={index} className={squareBoxCss}>
@@ -40,18 +44,18 @@ const Row = ({ guessArr, currentGuess }) => {
         {[...Array(5 - letters.length)].map((_, index) => {
           return <div key={index} className={squareBoxCss}></div>;
         })}
-      </section>
+      </div>
     );
   }
 
   return (
-    <section className="flex justify-center items-center gap-2 mt-2">
+    <div className="flex justify-center items-center gap-2 mt-2">
       <div className={squareBoxCss}></div>
       <div className={squareBoxCss}></div>
       <div className={squareBoxCss}></div>
       <div className={squareBoxCss}></div>
       <div className={squareBoxCss}></div>
-    </section>
+    </div>
   );
 };
 
