@@ -13,7 +13,7 @@ const Wordle = ({ solution }) => {
 
     if (isCorrect) {
       window.removeEventListener("keyup", handleKeyup);
-      toast.warn("Congo! Your guess is correct.");
+      toast.success("Congo! Your guess is correct.");
     }
 
     if (turn > 5) {

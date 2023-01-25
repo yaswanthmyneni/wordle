@@ -5,17 +5,25 @@ const Keyboard = ({ usedKeys, handleKeyup }) => {
   const rowTwo = "asdfghjkl".split("");
   const rowThree = "zxcvbnm".split("");
 
-  const keyCss = "p-4 rounded bg-key-bg cursor-pointer text-white";
+  const keyCss = "p-2 sm:p-4 rounded bg-key-bg cursor-pointer text-white";
 
   return (
     <section className="w-fit mx-auto">
-      <div className="flex gap-2 mt-4">
+      <div className="flex gap-1 flex-wrap sm:gap-2 mt-4">
         {rowOne.map((key) => {
           const color = usedKeys[key];
           return (
             <p
               key={key}
-              className={`${keyCss} bg-${color}`}
+              className={`${keyCss} ${
+                color === "green"
+                  ? "bg-green-500"
+                  : color === "yellow"
+                  ? "bg-yellow-500"
+                  : color === "slate"
+                  ? "bg-slate-500"
+                  : ""
+              }`}
               onClick={() => {
                 handleKeyup({ key });
               }}
@@ -25,13 +33,21 @@ const Keyboard = ({ usedKeys, handleKeyup }) => {
           );
         })}
       </div>
-      <div className="flex gap-2 mt-3 w-fit mx-auto">
+      <div className="flex flex-wrap gap-1 sm:gap-2 mt-3 w-fit mx-auto">
         {rowTwo.map((key) => {
           const color = usedKeys[key];
           return (
             <p
               key={key}
-              className={`${keyCss} bg-${color}`}
+              className={`${keyCss} ${
+                color === "green"
+                  ? "bg-green-500"
+                  : color === "yellow"
+                  ? "bg-yellow-500"
+                  : color === "slate"
+                  ? "bg-slate-500"
+                  : ""
+              }`}
               onClick={() => {
                 handleKeyup({ key });
               }}
@@ -41,7 +57,7 @@ const Keyboard = ({ usedKeys, handleKeyup }) => {
           );
         })}
       </div>
-      <div className="flex gap-2 mt-3">
+      <div className="flex flex-wrap gap-1 sm:gap-2 mt-3">
         <p
           className={keyCss}
           onClick={() => {
@@ -53,7 +69,18 @@ const Keyboard = ({ usedKeys, handleKeyup }) => {
         {rowThree.map((key) => {
           const color = usedKeys[key];
           return (
-            <p key={key} className={`${keyCss} bg-${color}`}>
+            <p
+              key={key}
+              className={`${keyCss} ${
+                color === "green"
+                  ? "bg-green-500"
+                  : color === "yellow"
+                  ? "bg-yellow-500"
+                  : color === "slate"
+                  ? "bg-slate-500"
+                  : ""
+              }`}
+            >
               {key.toUpperCase()}
             </p>
           );

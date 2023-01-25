@@ -1,8 +1,7 @@
 import React from "react";
 
 const Row = ({ guessArr, currentGuess }) => {
-  const squareBoxCss =
-    "flex justify-center items-center border-2 border-slate-400 w-10 h-10 rounded";
+  const squareBoxCss = `flex justify-center items-center border-2 border-slate-500 w-10 h-10 rounded`;
 
   if (guessArr) {
     return (
@@ -11,7 +10,13 @@ const Row = ({ guessArr, currentGuess }) => {
           return (
             <div
               key={index}
-              className={`${squareBoxCss} bg-${letterObj.color}-400 text-white`}
+              className={`${squareBoxCss} ${
+                letterObj.color === "green"
+                  ? "bg-green-500 border-green-500"
+                  : letterObj.color === "yellow"
+                  ? "bg-yellow-500 border-yellow-500"
+                  : "bg-slate-500 border-slate-500"
+              } text-white`}
             >
               {letterObj.key.toUpperCase()}
             </div>
